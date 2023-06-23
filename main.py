@@ -157,7 +157,6 @@ solarInfluences = ["[[Book of Shadows/MOD/Fleeting/Astrology/Zodiac/Aries#Influe
 ui.label('Energy map generator')
 
 month = ui.input(label='Month')
-ui.checkbox()
 
 def lunarDaySection():
   ui.label("Lunar Day")
@@ -518,16 +517,16 @@ def log():
         print(f"{lunarLabels[lunar]}")
 
 def run():
-  lunarDays.append(lunarDaySection)
-  dates.append(dateSection)
-  personalNumbers.append(personalNumberSection)
-  mansions.append(mansionSection)
-  lunarSigns.append(lunarSignSection)
-  solarSigns.append(solarSignSection)
+  lunarDays.append(lunarDaySection())
+  dates.append(dateSection())
+  personalNumbers.append(personalNumberSection())
+  mansions.append(mansionSection())
+  lunarSigns.append(lunarSignSection())
+  solarSigns.append(solarSignSection())
   ui.button("Submit")
   ui.run()
 
-ui.switch("1")
+# ui.switch("1")
 # lunarDaySection()
-ui.run()
-# run()
+# ui.run()
+run()
