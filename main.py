@@ -1,4 +1,5 @@
 from nicegui import ui
+import os
 
 lunarDays = []
 dates = []
@@ -156,12 +157,14 @@ solarInfluences = ["[[Book of Shadows/MOD/Fleeting/Astrology/Zodiac/Aries#Influe
 ui.label('Energy map generator')
 
 month = ui.input(label='Month')
+ui.checkbox()
 
 def lunarDaySection():
   ui.label("Lunar Day")
   with ui.grid(rows=2, columns=10):
     
     day1 = ui.checkbox("1")
+    ui.checkbox("1")
     day2 = ui.checkbox("2")
     day3 = ui.checkbox("3")
     day4 = ui.checkbox("4")
@@ -302,7 +305,7 @@ def dateSection():
 def personalNumberSection():
   ui.label("Personal Number")
 
-  with ui.grid(columns= 3):
+  with ui.grid(columns= 9):
     pn1 = ui.checkbox("1")
     pn2 = ui.checkbox("2")
     pn3 = ui.checkbox("3")
@@ -329,12 +332,202 @@ def personalNumberSection():
 
 def planetSection():
   ui.label("Planets")
-  
-  with ui.grid(columns=3):
-    sunIcon = ui.icon("brightness-5")
+  # TODO add avatar images
+  with ui.grid(columns=7):
     sun = ui.checkbox("Sun")
+    moon = ui.checkbox("Moon")
+    mars = ui.checkbox("Mars")
+    mercury = ui.checkbox("Mercury")
+    jupiter = ui.checkbox("Jupiter")
+    venus = ui.checkbox("Venus")
+    saturn = ui.checkbox("Saturn")
+    
+  planets.append(sun)
+  planets.append(moon)
+  planets.append(mars)
+  planets.append(mercury)
+  planets.append(jupiter)
+  planets.append(venus)
+  planets.append(saturn)
 
-lunarDaySection()
-dateSection()
-personalNumberSection()
+  return sun, moon, mars, mercury, jupiter, venus, saturn
+
+def mansionSection():
+  ui.label("Lunar Mansions")
+
+  with ui.grid(columns=7):
+    mansion1 = ui.checkbox("1 Alnath / Al-Sharatain")
+    mansion2 = ui.checkbox("2 Albotain / Al-Butain")
+    mansion3 = ui.checkbox("3 Athoray / Al-Thuraiya")
+    mansion4 = ui.checkbox("4 Aldebaran / Al-Dabaran")
+    mansion5 = ui.checkbox("5 Almices / Al-Haqa")
+    mansion6 = ui.checkbox("6 Althaya / Al-Hana")
+    mansion7 = ui.checkbox("7 Aldirah / Al-Dhira")
+    mansion8 = ui.checkbox("8 Annathru / Al-Nathrah")
+    mansion9 = ui.checkbox("9 Atarf / Al-Tarf")
+    mansion10 = ui.checkbox("10 Alegba / Al-Jabhah")
+    mansion11 = ui.checkbox("11 Azobra Al-Zabrah")
+    mansion12 = ui.checkbox("12 Acarfa / Al-Sarfah")
+    mansion13 = ui.checkbox("13 Alahue / Al-Awwa")
+    mansion14 = ui.checkbox("14 Azimech / Al-Simak")
+    mansion15 = ui.checkbox("15 Algarfa / Al-Ghafr")
+    mansion16 = ui.checkbox("16 Azubene / Al-Zubana")
+    mansion17 = ui.checkbox("17 Alichil / Al-iklil")
+    mansion18 = ui.checkbox("18 Alcalb / Al-Qalb")
+    mansion19 = ui.checkbox("19 Exaula / Al-Shaulah")
+    mansion20 = ui.checkbox("20 Nahaym")
+    mansion21 = ui.checkbox("21 Elbelda / Al-Baldah")
+    mansion22 = ui.checkbox("22 Caadaldeba / Sa’d al-Dhabi")
+    mansion23 = ui.checkbox("23 Caaddebolach / Sa’d Bula")
+    mansion24 = ui.checkbox("24 Caadacohot Sa’d Saad")
+    mansion25 = ui.checkbox("25 Caadaahaebia / Sa’d al-Akhbiyah")
+    mansion26 = ui.checkbox("26 Almiquedan / Al-Fargh")
+    mansion27 = ui.checkbox("27 Algarfalmaeharl / Al-Fargh al-Thani")
+    mansion28 = ui.checkbox("28 Arreche / Batn al-Hut")
+
+  mansions.append(mansion1)
+  mansions.append(mansion2)
+  mansions.append(mansion3)
+  mansions.append(mansion4)
+  mansions.append(mansion5)
+  mansions.append(mansion6)
+  mansions.append(mansion7)
+  mansions.append(mansion8)
+  mansions.append(mansion9)
+  mansions.append(mansion10)
+  mansions.append(mansion11)
+  mansions.append(mansion12)
+  mansions.append(mansion13)
+  mansions.append(mansion14)
+  mansions.append(mansion15)
+  mansions.append(mansion16)
+  mansions.append(mansion17)
+  mansions.append(mansion18)
+  mansions.append(mansion19)
+  mansions.append(mansion20)
+  mansions.append(mansion21)
+  mansions.append(mansion22)
+  mansions.append(mansion23)
+  mansions.append(mansion24)
+  mansions.append(mansion25)
+  mansions.append(mansion26)
+  mansions.append(mansion27)
+  mansions.append(mansion28)
+  
+  return mansion1, mansion2, mansion3, mansion4, mansion5, mansion6, mansion7, mansion8, mansion9, mansion10, mansion11, mansion12, mansion13, mansion14, mansion15, mansion16, mansion17, mansion18, mansion19, mansion20, mansion21, mansion22, mansion23, mansion24, mansion25, mansion26, mansion27, mansion28
+
+def lunarSignSection():
+  ui.label("Lunar Sign")
+
+  with ui.grid(columns=4):
+    aries = ui.checkbox("Aries")
+    taurus = ui.checkbox("Taurus")
+    gemini = ui.checkbox("Gemini")
+    cancer = ui.checkbox("Cancer")
+    leo = ui.checkbox("Leo")
+    virgo = ui.checkbox("Virgo")
+    libra = ui.checkbox("Libra")
+    scorpio = ui.checkbox("Scorpio")
+    sagittarius = ui.checkbox("Sagittarius")
+    capricorn = ui.checkbox("Capricorn")
+    aquarius = ui.checkbox("Aquarius")
+    pisces = ui.checkbox("Pisces")
+    
+  lunarSigns.append(aries)
+  lunarSigns.append(taurus)
+  lunarSigns.append(gemini)
+  lunarSigns.append(cancer)
+  lunarSigns.append(leo)
+  lunarSigns.append(virgo)
+  lunarSigns.append(libra)
+  lunarSigns.append(scorpio)
+  lunarSigns.append(sagittarius)
+  lunarSigns.append(capricorn)
+  lunarSigns.append(aquarius)
+  lunarSigns.append(pisces)
+  
+  return aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, sagittarius, capricorn, aquarius, pisces
+
+def solarSignSection():
+  ui.label("Solar Sign")
+  with ui.grid(columns=4):
+    aries = ui.checkbox("Aries")
+    taurus = ui.checkbox("Taurus")
+    gemini = ui.checkbox("Gemini")
+    cancer = ui.checkbox("Cancer")
+    leo = ui.checkbox("Leo")
+    virgo = ui.checkbox("Virgo")
+    libra = ui.checkbox("Libra")
+    scorpio = ui.checkbox("Scorpio")
+    sagittarius = ui.checkbox("Sagittarius")
+    capricorn = ui.checkbox("Capricorn")
+    aquarius = ui.checkbox("Aquarius")
+    pisces = ui.checkbox("Pisces")
+
+  solarSigns.append(aries)
+  solarSigns.append(taurus)
+  solarSigns.append(gemini)
+  solarSigns.append(cancer)
+  solarSigns.append(leo)
+  solarSigns.append(virgo)
+  solarSigns.append(libra)
+  solarSigns.append(scorpio)
+  solarSigns.append(sagittarius)
+  solarSigns.append(capricorn)
+  solarSigns.append(aquarius)
+  solarSigns.append(pisces)
+  
+  return aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, sagittarius, capricorn, aquarius, pisces
+
+def log():
+  for day in range(len(lunarDays)-1):
+        temp = lunarDays[day]
+        tempVal = temp.get()
+        if tempVal == 1:
+          print(f"{ageLabels[day]}")
+          ui.markdown(ageLabels[day])
+          
+  for date in range(len(dates)-1):
+      temp = dates[date]
+      tempVal = temp.get()
+      if tempVal == 1:
+        print(f"{dateLabels[date]}")
+        
+  for number in range(len(personalNumbers)-1):
+      temp = personalNumbers[number]
+      tempVal = temp.get()
+      if tempVal == 1:
+        print(f"{personalNumberLabels[number]}")
+        
+  for mansion in range(len(mansions)-1):
+      temp = mansions[mansion]
+      tempVal = temp.get()
+      if tempVal == 1:
+        print(f"{mansionLabels[mansion]}")
+        
+  for planet in range(len(planets)-1):
+      temp = planets[planet]
+      tempVal = temp.get()
+      if tempVal == 1:
+        print(f"{planetLabels[planet]}")
+        
+  for lunar in range(len(lunarSigns)-1):
+      temp = lunarSigns[lunar]
+      tempVal = temp.get()
+      if tempVal == 1:
+        print(f"{lunarLabels[lunar]}")
+
+def run():
+  lunarDays.append(lunarDaySection)
+  dates.append(dateSection)
+  personalNumbers.append(personalNumberSection)
+  mansions.append(mansionSection)
+  lunarSigns.append(lunarSignSection)
+  solarSigns.append(solarSignSection)
+  ui.button("Submit")
+  ui.run()
+
+ui.switch("1")
+# lunarDaySection()
 ui.run()
+# run()
